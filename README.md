@@ -1,7 +1,7 @@
 # Mongo-ObjectID
 
 [![NPM Version](https://img.shields.io/npm/v/mongo-objectid.svg?&style=flat-square)](https://www.npmjs.org/package/mongo-objectid)
-[![Build Status](https://img.shields.io/travis/com/mongo-objectid.svg?branch=master&style=flat-square)](https://travis-ci.com/Alex-Werner/mongo-objectid)
+[![Build Status](https://api.travis-ci.org/Alex-Werner/mongo-objectid.svg?branch=master)](https://travis-ci.com/Alex-Werner/mongo-objectid)
 
 > A MongoDB specification based implementation of ObjectID
 
