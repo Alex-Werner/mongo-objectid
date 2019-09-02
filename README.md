@@ -51,6 +51,18 @@ Returns the ID
 
 Validate the ID against specification.
 
+#### `.setMachineId([machineId])`
+
+This will set a new machine id and regenerate new id (careful, timevalue also change with this process).
+
+- machineId : optional - Allow to pass a specific machine id value;
+
+#### `.generateNew([time])`
+
+Allow to generate a new ID
+
+- time : default : Date.now() - Allow to pass a specific time value
+
 ## FAQ : 
 
 ### Why node engine v.12 limitation
