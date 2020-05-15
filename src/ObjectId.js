@@ -48,7 +48,12 @@ class ObjectId {
     this.machineId = machineId
     this.generateNew(this.#timeProp);
   }
-
+  getDate(){
+    return new Date(parseInt(this.toHex().substring(0, 8), 16) * 1000);
+  }
+  getTimestamp(){
+    return (parseInt(this.toHex().substring(0, 8), 16) * 1000);
+  }
   getCounterValue(){
     return this.#generateCounterValue();
   }

@@ -44,8 +44,9 @@ describe('ObjectId', () => {
     expect(parseInt(previousTime.toHex().slice(0,8),16)).to.be.lt(parseInt(id.toHex().slice(0,8),16))
   });
 
+  let id;
   it('should generate valid id', ()=>{
-    const id = new ObjectId(1567467048);
+    id = new ObjectId(1567467048);
     id.setMachineId(Buffer.from('18386bd1c3','hex'));
 
     const time = id.toString().slice(0,8);
@@ -55,5 +56,11 @@ describe('ObjectId', () => {
 
     const random = id.toString().slice(18)
   })
+  it('should get the date from id', function () {
+    expect(id.getDate()).to.deep.equal(new Date(1567467048000));
+  });
+  it('should get the timestamp from id', function () {
+    expect(id.getTimestamp()).to.deep.equal(1567467048000);
+  });
 
 });

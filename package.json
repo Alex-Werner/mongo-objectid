@@ -1,6 +1,6 @@
 {
   "name": "mongo-objectid",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A MongoDB specification based implementation of ObjectID",
   "main": "index.js",
   "scripts": {

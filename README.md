@@ -63,6 +63,16 @@ Allow to generate a new ID
 
 - time : default : Date.now() - Allow to pass a specific time value
 
+
+#### `.getDate()`
+
+Return the Date object corresponding to the time of the ObjectID creation
+
+#### `.getTimestamp()`
+
+Return the timestamp in ms corresponding to the time of ObjectID creation
+
+
 ## FAQ : 
 
 ### Why node engine v.12 limitation
