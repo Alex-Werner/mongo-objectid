@@ -52,7 +52,7 @@ class ObjectId {
     return new Date(parseInt(this.toHex().substring(0, 8), 16) * 1000);
   }
   getTimestamp(){
-    return (parseInt(this.toHex().substring(0, 8), 16) * 1000);
+    return (parseInt(this.toHex().substring(0, 8), 16));
   }
   getCounterValue(){
     return this.#generateCounterValue();

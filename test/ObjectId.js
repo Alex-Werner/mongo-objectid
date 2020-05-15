@@ -60,7 +60,14 @@ describe('ObjectId', () => {
     expect(id.getDate()).to.deep.equal(new Date(1567467048000));
   });
   it('should get the timestamp from id', function () {
-    expect(id.getTimestamp()).to.deep.equal(1567467048000);
+    expect(id.getTimestamp()).to.deep.equal(1567467048);
+  });
+  it('should work as expected', function () {
+    const anotherId = new ObjectId(1588913801);
+    expect(anotherId.getTimestamp()).to.deep.equal(1588913801)
+
+    const yetAnotherId = new ObjectId('5eb4e68937e91d77ad2d40a3');
+    expect(yetAnotherId.getTimestamp()).to.deep.equal(anotherId.getTimestamp())
   });
 
 });
