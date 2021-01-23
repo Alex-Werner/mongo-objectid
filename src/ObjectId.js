@@ -11,12 +11,9 @@ const validate = require('./methods/ops/validate');
 const UNIQUE_VALUE = randomBytes(5);
 
 class ObjectId {
-  #hex;
-  #timeProp;
-  #increment = ~~(Math.random() * 0xffffff);
 
-  #generateCounterValue = function () {
-    const inc = this.#increment = (this.#increment = (this.#increment + 1) % 0xffffff);
+  generateCounterValue(){
+    const inc = this.increment = (this.increment = (this.increment + 1) % 0xffffff);
     const buffer = Buffer.alloc(3);
     buffer[0] = inc & 0xff;
     buffer[1] = (inc >> 8) & 0xff;
@@ -28,25 +25,31 @@ class ObjectId {
     if (!validate(hex)) {
       throw new Error('Invalid input');
     }
-    this.#hex = hex;
+    this.hex = hex;
   }
 
   constructor(prop) {
     this.machineId = UNIQUE_VALUE;
+
+    this.hex =  null;
+    this.timeProp = null;
+    this.increment = ~~(Math.random() * 0xffffff);
+
     Object.assign(ObjectId.prototype, {
       generateNew:require('./methods/generateNew')
     })
-    const hex = (typeof prop === 'string' && prop.length === 24) ? prop : null;
+
+    const hex = (typeof prop === 'string' && prop.length === 24) ? prop : (prop && prop.toHex) ? prop.toHex() : null;
     if (hex) {
       this.fromHex(hex);
     } else {
-      this.#timeProp = prop;
+      this.timeProp = prop;
       this.generateNew(prop)
     }
   }
   setMachineId(machineId = UNIQUE_VALUE){
     this.machineId = machineId
-    this.generateNew(this.#timeProp);
+    this.generateNew(this.timeProp);
   }
   getDate(){
     return new Date(parseInt(this.toHex().substring(0, 8), 16) * 1000);
@@ -55,10 +58,10 @@ class ObjectId {
     return (parseInt(this.toHex().substring(0, 8), 16));
   }
   getCounterValue(){
-    return this.#generateCounterValue();
+    return this.generateCounterValue();
   }
   toHex(){
-    return this.#hex;
+    return this.hex;
   }
 };
 const inspect = (Symbol && Symbol.for('nodejs.util.inspect.custom')) || 'inspect';

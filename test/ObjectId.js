@@ -6,11 +6,11 @@ describe('ObjectId', () => {
     const id = new ObjectId();
     expect(id.toString().length).to.equal(24)
   });
-  it('should close', function () {
+  it('should clone', function () {
     const id = new ObjectId();
     const id2 = new ObjectId(id);
     expect(id2.toString().length).to.equal(24);
-    expect(id2).to.deep.equal(id);
+    expect(id2.toString()).to.equal(id.toString())
   });
   it('should allow validation', ()=>{
     const id = new ObjectId();
